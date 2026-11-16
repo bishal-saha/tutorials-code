@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      folders: ${{ steps.find.outputs.folders }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: find
+        env:
+          BASE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: python3 scripts/folders.py --changed-since "$BASE" >> "$GITHUB_OUTPUT"
+
+  test:
+    needs: changes
+    if: needs.changes.outputs.folders != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        folder: ${{ fromJSON(needs.changes.outputs.folders) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Lint
+        run: |
+          uvx ruff check "${{ matrix.folder }}"
+          uvx ruff format --check "${{ matrix.folder }}"
+      - name: Test (no live calls, no keys)
+        run: uv run --directory "${{ matrix.folder }}" pytest

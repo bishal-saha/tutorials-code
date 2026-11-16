@@ -1,0 +1,36 @@
+name: Release a folder
+
+# Tag a folder to publish it as a standalone zip, e.g. `my-article/v1.0.0`.
+on:
+  push:
+    tags: ["*/v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  zip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the zip
+        id: build
+        run: |
+          tag="${GITHUB_REF_NAME}"
+          folder="${tag%/v*}"
+          version="${tag##*/}"
+          test -d "$folder" || { echo "No folder named $folder"; exit 1; }
+          name="${folder}-${version}.zip"
+          extra=""
+          # Books ship the shared Kestrel Outfitters package with every zip.
+          if [ -d _shared/kestrel ] && [ "$folder" != "_shared/kestrel" ]; then extra="_shared/kestrel"; fi
+          zip -r "$name" "$folder" $extra LICENSE -x '*/.venv/*' '*/__pycache__/*'
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+          echo "folder=$folder" >> "$GITHUB_OUTPUT"
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" "${{ steps.build.outputs.name }}" \
+            --title "$GITHUB_REF_NAME" \
+            --notes "Standalone download of \`${{ steps.build.outputs.folder }}\`. See its README for the page on iambishal.com."

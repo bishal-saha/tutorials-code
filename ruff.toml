@@ -1,0 +1,9 @@
+# Shared lint and format rules for every folder in this repo.
+line-length = 100
+target-version = "py312"
+
+[lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[format]
+quote-style = "double"
