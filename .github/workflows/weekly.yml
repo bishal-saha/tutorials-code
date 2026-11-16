@@ -15,7 +15,7 @@ jobs:
     outputs:
       folders: ${{ steps.find.outputs.folders }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - id: find
         run: python3 scripts/folders.py >> "$GITHUB_OUTPUT"
 
@@ -28,6 +28,6 @@ jobs:
       matrix:
         folder: ${{ fromJSON(needs.folders.outputs.folders) }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@v6
       - run: uv run --directory "${{ matrix.folder }}" pytest
