@@ -1,0 +1,24 @@
+name: Code problem
+description: Something in this repo doesn't run or doesn't match the page.
+labels: ["bug"]
+body:
+  - type: input
+    id: content
+    attributes:
+      label: Which content?
+      description: The folder name, or the page URL on iambishal.com.
+      placeholder: e.g. <series-slug>/01-<module>/02-<lesson>
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: The command you ran and the output or error.
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: e.g. Python 3.12.7, uv 0.6, macOS 15

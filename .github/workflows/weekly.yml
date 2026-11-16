@@ -1,0 +1,33 @@
+name: Weekly
+
+# Every folder, every week, on recorded/mocked responses only (no API keys on GitHub).
+on:
+  schedule:
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  folders:
+    runs-on: ubuntu-latest
+    outputs:
+      folders: ${{ steps.find.outputs.folders }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: find
+        run: python3 scripts/folders.py >> "$GITHUB_OUTPUT"
+
+  test:
+    needs: folders
+    if: needs.folders.outputs.folders != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        folder: ${{ fromJSON(needs.folders.outputs.folders) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv run --directory "${{ matrix.folder }}" pytest
