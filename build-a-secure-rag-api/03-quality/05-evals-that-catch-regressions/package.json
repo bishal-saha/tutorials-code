@@ -1,0 +1,23 @@
+{
+  "name": "secure-rag-api-05-evals",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.2"
+  },
+  "scripts": {
+    "db:up": "docker compose up -d --wait",
+    "db:down": "docker compose down -v",
+    "migrate": "node scripts/migrate.js",
+    "ingest": "node scripts/ingest.js",
+    "start": "node src/server.js",
+    "test": "node --test --test-concurrency=1",
+    "eval": "node eval/run.js",
+    "eval:update-baseline": "node eval/run.js --update-baseline"
+  },
+  "dependencies": {
+    "fastify": "^5.6.0",
+    "pg": "^8.16.0",
+    "jose": "^6.1.0"
+  }
+}

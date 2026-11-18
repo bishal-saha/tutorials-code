@@ -18,7 +18,7 @@ Each series has one folder, named after its URL slug. Inside it, every lesson ha
 
 | Series | Folder | Lessons |
 |---|---|---|
-| _Coming soon_ | | |
+| [Build a secure RAG API](https://iambishal.com/tutorials/build-a-secure-rag-api) | [`build-a-secure-rag-api`](build-a-secure-rag-api) | 5 (Node.js 24, PostgreSQL 17 + pgvector) |
 
 ## Use one series
 
@@ -34,7 +34,7 @@ Each finished series is also on the [Releases](https://github.com/bishal-saha/tu
 
 ## Requirements
 
-Python 3.12+ and [uv](https://docs.astral.sh/uv/). API keys only where a `.env.example` asks for them; `.env` is never committed.
+Python 3.12+ and [uv](https://docs.astral.sh/uv/), unless the series' README says otherwise (Build a secure RAG API uses Node.js 24 and Docker). API keys only where a `.env.example` asks for them; `.env` is never committed.
 
 ## Problems
 

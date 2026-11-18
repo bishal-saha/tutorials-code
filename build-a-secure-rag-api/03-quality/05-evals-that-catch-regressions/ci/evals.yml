@@ -1,0 +1,32 @@
+# Copy to .github/workflows/evals.yml. Runs the evals on every pull request against a
+# throwaway PostgreSQL 17 + pgvector service, with the fake embedder and fake model, so the
+# run is deterministic, free and needs no API keys.
+name: evals
+on: [pull_request]
+permissions:
+  contents: read
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      db:
+        image: pgvector/pgvector:0.8.7-pg17
+        env: { POSTGRES_USER: rag, POSTGRES_PASSWORD: rag, POSTGRES_DB: rag }
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U rag -d rag" --health-interval 2s --health-retries 30
+    env:
+      DATABASE_URL: postgres://rag_app:rag_app@localhost:5432/rag
+      DATABASE_URL_INGEST: postgres://rag_ingest:rag_ingest@localhost:5432/rag
+      DATABASE_URL_ADMIN: postgres://rag:rag@localhost:5432/rag
+      EMBEDDINGS_PROVIDER: fake
+      LLM_PROVIDER: fake
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with: { node-version: 24 }
+      - run: npm ci
+      - run: npm test
+      - run: npm run migrate && npm run ingest
+      - run: npm run eval

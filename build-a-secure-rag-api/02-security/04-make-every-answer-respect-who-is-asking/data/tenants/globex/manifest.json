@@ -1,0 +1,8 @@
+{
+  "name": "Globex Payroll",
+  "documents": [
+    { "file": "exports-runbook.md", "title": "Runbook: recovering stuck exports", "allowedRoles": ["agent"] },
+    { "file": "billing-help.md", "title": "Invoices and billing", "allowedRoles": ["agent", "end_user"] },
+    { "file": "sso-runbook.md", "title": "Runbook: SSO login failures", "allowedRoles": ["agent"] }
+  ]
+}

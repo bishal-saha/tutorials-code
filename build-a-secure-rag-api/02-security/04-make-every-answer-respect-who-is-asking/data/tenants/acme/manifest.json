@@ -1,0 +1,8 @@
+{
+  "name": "Acme Analytics",
+  "documents": [
+    { "file": "exports-help.md", "title": "Exporting your data", "allowedRoles": ["agent", "end_user"] },
+    { "file": "exports-runbook.md", "title": "Runbook: stuck data exports", "allowedRoles": ["agent"] },
+    { "file": "api-keys-help.md", "title": "Rotating API keys", "allowedRoles": ["agent", "end_user"] }
+  ]
+}

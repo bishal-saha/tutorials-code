@@ -1,0 +1,42 @@
+# Copy to .github/workflows/evals-nightly.yml. Runs the same golden dataset nightly against the
+# real embedding and chat providers: keys in repository secrets, URLs and model names in
+# repository variables. Not exercised by this tutorial, which has no provider keys; it shows
+# the shape. Quality scores are printed for review and only a leak fails the run, because a
+# real model's scores need their own baseline and history.
+name: evals-nightly
+on:
+  schedule: [{ cron: "0 2 * * *" }]
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  evals-real:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      db:
+        image: pgvector/pgvector:0.8.7-pg17
+        env: { POSTGRES_USER: rag, POSTGRES_PASSWORD: rag, POSTGRES_DB: rag }
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U rag -d rag" --health-interval 2s --health-retries 30
+    env:
+      DATABASE_URL: postgres://rag_app:rag_app@localhost:5432/rag
+      DATABASE_URL_INGEST: postgres://rag_ingest:rag_ingest@localhost:5432/rag
+      DATABASE_URL_ADMIN: postgres://rag:rag@localhost:5432/rag
+      EMBEDDINGS_PROVIDER: http
+      EMBEDDINGS_URL: ${{ vars.EMBEDDINGS_URL }}
+      EMBEDDINGS_MODEL: ${{ vars.EMBEDDINGS_MODEL }}
+      EMBEDDINGS_DIMENSIONS: ${{ vars.EMBEDDINGS_DIMENSIONS }}
+      EMBEDDINGS_API_KEY: ${{ secrets.EMBEDDINGS_API_KEY }}
+      LLM_PROVIDER: http
+      LLM_URL: ${{ vars.LLM_URL }}
+      LLM_MODEL: ${{ vars.LLM_MODEL }}
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with: { node-version: 24 }
+      - run: npm ci
+      - run: npm run migrate && npm run ingest
+      - run: node eval/run.js --report-only

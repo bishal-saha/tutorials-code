@@ -1,0 +1,18 @@
+{
+  "name": "secure-rag-api-03-grounded-answers",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24.2" },
+  "scripts": {
+    "db:up": "docker compose up -d --wait",
+    "db:down": "docker compose down -v",
+    "migrate": "node scripts/migrate.js",
+    "ingest": "node scripts/ingest.js",
+    "start": "node src/server.js",
+    "test": "node --test --test-concurrency=1"
+  },
+  "dependencies": {
+    "fastify": "^5.6.0",
+    "pg": "^8.16.0"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "datasetVersion": 6,
+  "k": 5,
+  "scores": {
+    "recallAtK": 1,
+    "groundedness": 1,
+    "noAnswerRate": 1
+  }
+}
