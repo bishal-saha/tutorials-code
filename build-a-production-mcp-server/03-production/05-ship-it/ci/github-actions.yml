@@ -1,0 +1,24 @@
+# Copy to .github/workflows/helpline.yml in your server's repository.
+name: helpline
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v7
+      - run: uv sync --frozen
+      - name: Lint
+        run: uvx ruff check . && uvx ruff format --check .
+      # The gate runs first so a breaking change fails a step that names it.
+      # (The test suite checks the contract too, and also fails on unrecorded
+      # additive changes, which this step only lists.)
+      - name: Contract gate
+        run: uv run python check_contract.py
+      - name: Tests (no network, no keys)
+        run: uv run pytest

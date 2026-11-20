@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "helpline": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/absolute/path/to/build-a-production-mcp-server/03-production/05-ship-it",
+        "python",
+        "stdio_main.py"
+      ]
+    }
+  }
+}

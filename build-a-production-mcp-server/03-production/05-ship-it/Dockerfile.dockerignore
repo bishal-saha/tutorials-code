@@ -1,0 +1,7 @@
+# Used by BuildKit for this Dockerfile (the build context is the series folder).
+# Keep dev credentials, caches and environments out of every image layer.
+**/*.pem
+**/token.txt
+**/.venv
+**/__pycache__
+**/.pytest_cache
