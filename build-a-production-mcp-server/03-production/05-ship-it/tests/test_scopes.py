@@ -44,3 +44,10 @@ def test_malformed_customers_claim_grants_nothing():
     verifier = JwtTokenVerifier(issuer=issuer.issuer, audience="http://x/mcp", jwks=issuer.jwks())
     token = issuer.mint(audience="http://x/mcp", scopes=["tickets:read"], helpline_customers="*")
     assert asyncio.run(verifier.verify_token(token)).customers == []  # a string, not a list
+
+
+def test_http_app_refuses_a_server_without_a_verifier():
+    from helpline.server import build_server, http_app
+
+    with pytest.raises(ValueError, match="token_verifier"):
+        http_app(build_server(), "http://127.0.0.1:8000/mcp")

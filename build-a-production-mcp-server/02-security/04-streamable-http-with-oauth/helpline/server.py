@@ -362,6 +362,10 @@ def http_app(server: MCPServer, resource_url: str) -> Starlette:
     requests without a valid tickets:read token (401). ToolScopeMiddleware adds
     the 403 insufficient_scope challenge for tools that need more.
     """
+    if server.settings.auth is None:
+        # Without a verifier every request would count as "no token", which the
+        # tools treat as stdio's trusted local caller. Never serve that over HTTP.
+        raise ValueError("http_app needs a server built with a token_verifier")
     app = server.streamable_http_app(stateless_http=True, json_response=True)
     metadata_url = str(build_resource_metadata_url(AnyHttpUrl(resource_url)))
     for route in app.routes:
