@@ -1,0 +1,429 @@
+{
+  "resource_templates": [
+    "helpline://kb/{article_id}",
+    "helpline://tickets/{ticket_id}"
+  ],
+  "tools": {
+    "draft_reply": {
+      "description": "Save a draft reply on a ticket for a person to review. It is never sent.",
+      "input": {
+        "properties": {
+          "article_ids": {
+            "default": [],
+            "description": "Articles to link, e.g. KB-103",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 3,
+            "type": "array"
+          },
+          "message": {
+            "description": "The reply text to the customer",
+            "maxLength": 2000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "ticket_id": {
+            "description": "Ticket id, e.g. HL-1003",
+            "type": "string"
+          }
+        },
+        "required": [
+          "ticket_id",
+          "message"
+        ],
+        "type": "object"
+      },
+      "output": {
+        "properties": {
+          "body": {
+            "type": "string"
+          },
+          "draft_id": {
+            "type": "integer"
+          },
+          "sent": {
+            "const": false,
+            "default": false,
+            "description": "Always false: a person reviews and sends drafts",
+            "type": "boolean"
+          },
+          "ticket_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "draft_id",
+          "ticket_id",
+          "body"
+        ],
+        "type": "object"
+      },
+      "read_only": false,
+      "scopes": [
+        "tickets:read"
+      ]
+    },
+    "escalate_ticket": {
+      "description": "Escalate a ticket to the on-call engineer. Calling it again for the same ticket\nreturns the existing escalation instead of paging twice. Needs tickets:escalate.",
+      "input": {
+        "properties": {
+          "reason": {
+            "maxLength": 500,
+            "minLength": 10,
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "high",
+              "urgent"
+            ],
+            "type": "string"
+          },
+          "ticket_id": {
+            "description": "Ticket id, e.g. HL-1003",
+            "type": "string"
+          }
+        },
+        "required": [
+          "ticket_id",
+          "severity",
+          "reason"
+        ],
+        "type": "object"
+      },
+      "output": {
+        "properties": {
+          "already_escalated": {
+            "description": "True when the ticket was escalated before and nothing new was created",
+            "type": "boolean"
+          },
+          "escalation_id": {
+            "type": "integer"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "high",
+              "urgent"
+            ],
+            "type": "string"
+          },
+          "ticket_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "escalation_id",
+          "ticket_id",
+          "severity",
+          "reason",
+          "already_escalated"
+        ],
+        "type": "object"
+      },
+      "read_only": false,
+      "scopes": [
+        "tickets:read",
+        "tickets:escalate"
+      ]
+    },
+    "get_ticket": {
+      "description": "Read a ticket: its newest messages within the output budget, and the customer's plan.\n\nWhen omitted_messages is above zero, older messages were left out; they are in\nthe full_history resource.",
+      "input": {
+        "properties": {
+          "ticket_id": {
+            "description": "Ticket id, e.g. HL-1003",
+            "type": "string"
+          }
+        },
+        "required": [
+          "ticket_id"
+        ],
+        "type": "object"
+      },
+      "output": {
+        "properties": {
+          "created_at": {
+            "type": "string"
+          },
+          "customer": {
+            "description": "Customer company name",
+            "type": "string"
+          },
+          "full_history": {
+            "description": "Resource URI with every message",
+            "type": "string"
+          },
+          "id": {
+            "description": "Ticket id, e.g. HL-1003",
+            "type": "string"
+          },
+          "messages": {
+            "description": "The newest messages that fit, oldest first",
+            "items": {
+              "properties": {
+                "at": {
+                  "type": "string"
+                },
+                "author": {
+                  "enum": [
+                    "customer",
+                    "agent"
+                  ],
+                  "type": "string"
+                },
+                "body": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "author",
+                "at",
+                "body"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "omitted_messages": {
+            "description": "Older messages left out to stay within budget",
+            "type": "integer"
+          },
+          "plan": {
+            "description": "The customer's plan: starter, team or enterprise",
+            "type": "string"
+          },
+          "priority": {
+            "enum": [
+              "low",
+              "normal",
+              "high",
+              "urgent"
+            ],
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "open",
+              "pending",
+              "solved"
+            ],
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "subject",
+          "customer",
+          "status",
+          "priority",
+          "created_at",
+          "plan",
+          "messages",
+          "omitted_messages",
+          "full_history"
+        ],
+        "type": "object"
+      },
+      "read_only": true,
+      "scopes": [
+        "tickets:read"
+      ]
+    },
+    "search_knowledge_base": {
+      "description": "Find knowledge-base articles that answer a customer's question, best match first.\n\nIt can take a few seconds; it reports progress and gives up after a timeout.",
+      "input": {
+        "properties": {
+          "limit": {
+            "default": 3,
+            "maximum": 5,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "query": {
+            "description": "What the customer is asking",
+            "minLength": 3,
+            "type": "string"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "type": "object"
+      },
+      "output": {
+        "properties": {
+          "articles": {
+            "items": {
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "snippet": {
+                  "description": "The first sentence of the article",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "snippet"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "articles"
+        ],
+        "type": "object"
+      },
+      "read_only": true,
+      "scopes": [
+        "tickets:read"
+      ]
+    },
+    "search_tickets": {
+      "description": "Search tickets by words, status or customer, newest first, one page at a time.\n\nUse this to get a ticket id before calling get_ticket, draft_reply or escalate_ticket.",
+      "input": {
+        "properties": {
+          "cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "next_cursor from the previous page, unchanged"
+          },
+          "customer": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Customer id or company name, e.g. 'Corvid Analytics'"
+          },
+          "limit": {
+            "default": 5,
+            "maximum": 10,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "query": {
+            "default": "",
+            "description": "Words to match in the subject or messages; empty for all",
+            "type": "string"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "enum": [
+                  "open",
+                  "pending",
+                  "solved"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          }
+        },
+        "type": "object"
+      },
+      "output": {
+        "properties": {
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Pass as `cursor` to get the next page; null on the last page"
+          },
+          "tickets": {
+            "items": {
+              "properties": {
+                "created_at": {
+                  "type": "string"
+                },
+                "customer": {
+                  "description": "Customer company name",
+                  "type": "string"
+                },
+                "id": {
+                  "description": "Ticket id, e.g. HL-1003",
+                  "type": "string"
+                },
+                "priority": {
+                  "enum": [
+                    "low",
+                    "normal",
+                    "high",
+                    "urgent"
+                  ],
+                  "type": "string"
+                },
+                "status": {
+                  "enum": [
+                    "open",
+                    "pending",
+                    "solved"
+                  ],
+                  "type": "string"
+                },
+                "subject": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "subject",
+                "customer",
+                "status",
+                "priority",
+                "created_at"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "total": {
+            "description": "How many tickets matched in all",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "tickets",
+          "total",
+          "next_cursor"
+        ],
+        "type": "object"
+      },
+      "read_only": true,
+      "scopes": [
+        "tickets:read"
+      ]
+    }
+  }
+}

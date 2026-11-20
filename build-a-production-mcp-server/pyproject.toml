@@ -1,0 +1,19 @@
+[project]
+name = "build-a-production-mcp-server"
+version = "0.1.0"
+description = "Companion code for Build a production MCP server on iambishal.com"
+requires-python = ">=3.12"
+dependencies = [
+  "httpx2>=2.10.0",
+  "mcp==2.3.0",
+  "pyjwt[crypto]>=2.10.1",
+  "uvicorn>=0.31.1",
+]
+
+[dependency-groups]
+dev = ["pytest>=8", "anyio>=4.9"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["live: calls a real model or API; run only with scripts/live_check.py"]
+addopts = "-m 'not live'"

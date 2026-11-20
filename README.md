@@ -19,6 +19,7 @@ Each series has one folder, named after its URL slug. Inside it, every lesson ha
 | Series | Folder | Lessons |
 |---|---|---|
 | [Build a secure RAG API](https://iambishal.com/tutorials/build-a-secure-rag-api) | [`build-a-secure-rag-api`](build-a-secure-rag-api) | 5 (Node.js 24, PostgreSQL 17 + pgvector) |
+| [Build a production MCP server](https://iambishal.com/tutorials/build-a-production-mcp-server) | [`build-a-production-mcp-server`](build-a-production-mcp-server) | 5 (Python 3.12, mcp 2.3.0) |
 
 ## Use one series
 
