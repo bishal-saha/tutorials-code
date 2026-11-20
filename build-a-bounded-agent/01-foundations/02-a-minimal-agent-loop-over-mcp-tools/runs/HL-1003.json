@@ -1,0 +1,127 @@
+{
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "ran_at": "2026-11-20T22:26:30+00:00",
+  "ticket": "HL-1003",
+  "outcome": "done",
+  "steps": 5,
+  "usage": {
+    "input_tokens": 14869,
+    "output_tokens": 1836,
+    "cache_read": 0,
+    "cache_write": 0
+  },
+  "cost_usd": 0.096196,
+  "trace": [
+    {
+      "step": 1,
+      "stop_reason": "tool_use",
+      "usage": {
+        "input_tokens": 1772,
+        "output_tokens": 57,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "tool_calls": [
+        {
+          "name": "get_ticket",
+          "input": {
+            "ticket_id": "HL-1003"
+          },
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "stop_reason": "tool_use",
+      "usage": {
+        "input_tokens": 2211,
+        "output_tokens": 137,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "tool_calls": [
+        {
+          "name": "search_knowledge_base",
+          "input": {
+            "query": "webhook 401 after signing secret rotation"
+          },
+          "is_error": false
+        },
+        {
+          "name": "search_tickets",
+          "input": {
+            "query": "webhook 401",
+            "limit": 10
+          },
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "step": 3,
+      "stop_reason": "tool_use",
+      "usage": {
+        "input_tokens": 2786,
+        "output_tokens": 178,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "tool_calls": [
+        {
+          "name": "search_tickets",
+          "input": {
+            "query": "signing secret",
+            "limit": 10
+          },
+          "is_error": false
+        },
+        {
+          "name": "search_tickets",
+          "input": {
+            "query": "webhook",
+            "limit": 10
+          },
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "step": 4,
+      "stop_reason": "tool_use",
+      "usage": {
+        "input_tokens": 3393,
+        "output_tokens": 789,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "tool_calls": [
+        {
+          "name": "draft_reply",
+          "input": {
+            "ticket_id": "HL-1003",
+            "message": "Hi Corvid Analytics team,\n\nThanks for confirming that you updated the secret in both the dashboard and your receiver, and for the start time (18:02 UTC yesterday). We're treating this as urgent and have asked our engineering team to look at the deliveries to your endpoint.\n\nSome background that may help while we investigate:\n\n- After a signing secret is rotated, the old and the new secret are both valid for 24 hours (KB-103). During that window, check that your receiver checks the signature against the new secret and doesn't reject a request just because the first signature it reads doesn't match.\n- Failed deliveries are retried 8 times with exponential backoff over about 24 hours (KB-104). Deliveries that failed soon after 18:02 UTC yesterday are getting close to the end of their retry window. Once we find the cause, we'll work with you to recover any orders that didn't sync.\n\nTo help us move faster, could you send us:\n1. The webhook endpoint URL that is failing.\n2. The 401 response body or log entry from your receiver for one failed delivery, plus the delivery ID if you have it.\n3. The library or code your receiver uses to verify signatures.\n\nWe'll update you as soon as we know more.\n\nBest regards,\nHelpline Support",
+            "article_ids": [
+              "KB-103",
+              "KB-104"
+            ]
+          },
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "step": 5,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4707,
+        "output_tokens": 675,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "tool_calls": []
+    }
+  ],
+  "final_text": "I saved draft reply **#1** on HL-1003. It hasn't been sent. **This ticket needs escalating now, at urgent severity.** I didn't escalate it myself.\n\n**The problem:** Corvid Analytics is on the enterprise plan, and the ticket is marked urgent. Since they rotated their webhook signing secret, every delivery to their endpoint gets a 401, so their orders aren't syncing. They confirmed they put the new secret in both the dashboard and their receiver. The failures started at 18:02 UTC on Nov 13.\n\n**What I found:**\n- **KB-103:** after a rotation, the old and new secrets both stay valid for 24 hours. That makes a clean, total failure from the moment of rotation strange. It points to a problem in how we sign during that window, or to their receiver checking the wrong signature. That second part is my guess, not something I confirmed.\n- **KB-104:** failed deliveries are retried 8 times over about 24 hours. The earliest failures run out of retries around 18:00 UTC on Nov 14, so events could be lost for good after that.\n- No other customer has reported this. The only other webhook ticket is HL-1010 from the same customer, a routine question about retries, and it doesn't look related.\n\n**The draft:** it links KB-103 and KB-104 and suggests a check they can run on their receiver. It also warns that the retry window is closing and asks for the failing endpoint URL, a sample 401 response or log entry with a delivery ID, and the code they use to verify signatures.\n\n**Why escalate:** this is an enterprise customer whose orders have stopped syncing, and a deadline is coming. An engineer has to check our signing behavior during the rotation window. They may also need to replay or extend retries for the failed deliveries before they're dropped.\n\n**Before sending the draft:** it tells the customer that engineering has already been asked to look, so only send it once the escalation is filed. If you don't escalate, change that line."
+}
