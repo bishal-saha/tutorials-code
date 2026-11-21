@@ -1,0 +1,57 @@
+{
+  "model": "claude-opus-5-5",
+  "effort": "medium",
+  "ran_at": "2026-11-20T23:20:06+00:00",
+  "prices": "USD per MTok (claude-opus-5-5): input 4.00, output 20.00, cache write 5m 5.00, cache hit 0.20",
+  "runs": [
+    {
+      "ticket": "HL-1003",
+      "outcome": "done",
+      "steps": 5,
+      "usage": {
+        "input_tokens": 12,
+        "output_tokens": 1845,
+        "cache_read": 10768,
+        "cache_write": 4815
+      },
+      "cost_usd": 0.063177,
+      "guard_notes": [],
+      "escalated": [
+        "HL-1003"
+      ],
+      "drafts": 1
+    },
+    {
+      "ticket": "HL-1012",
+      "outcome": "done",
+      "steps": 4,
+      "usage": {
+        "input_tokens": 10,
+        "output_tokens": 1056,
+        "cache_read": 7008,
+        "cache_write": 3474
+      },
+      "cost_usd": 0.039932,
+      "guard_notes": [],
+      "escalated": [],
+      "drafts": 1
+    },
+    {
+      "ticket": "HL-1002",
+      "outcome": "done",
+      "steps": 4,
+      "usage": {
+        "input_tokens": 10,
+        "output_tokens": 739,
+        "cache_read": 6614,
+        "cache_write": 3149
+      },
+      "cost_usd": 0.031888,
+      "guard_notes": [],
+      "escalated": [],
+      "drafts": 1
+    }
+  ],
+  "total_cost_usd": 0.134997,
+  "cost_per_task_usd": 0.044999
+}
