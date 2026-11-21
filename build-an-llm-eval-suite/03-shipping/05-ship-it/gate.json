@@ -1,0 +1,11 @@
+{
+  "judge_model": "claude-haiku-5-5",
+  "criterion": "v2",
+  "thresholds": {
+    "schema_valid": 1.0,
+    "escalation_correct": 0.95,
+    "cites_required": 0.9,
+    "numbers_supported": 0.95,
+    "judge_pass": 0.9
+  }
+}

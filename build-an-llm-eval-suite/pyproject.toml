@@ -1,0 +1,16 @@
+[project]
+name = "build-an-llm-eval-suite"
+version = "0.1.0"
+description = "Companion code for Build an eval suite for an LLM feature on iambishal.com"
+requires-python = ">=3.12"
+dependencies = [
+  "anthropic==2.12.0",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["live: calls a real model or API; run only with scripts/live_check.py"]
+addopts = "-m 'not live'"

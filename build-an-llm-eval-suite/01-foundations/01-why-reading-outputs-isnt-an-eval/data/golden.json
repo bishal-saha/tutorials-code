@@ -1,0 +1,495 @@
+{
+  "_note": "Synthetic golden set for the Helpline reply drafter. Expected values follow the escalation policy in evals/drafter.py.",
+  "cases": [
+    {
+      "id": "G01",
+      "category": "answer",
+      "plan": "enterprise",
+      "subject": "SSO fails with 'invalid audience'",
+      "body": "We switched identity provider this morning and every SSO login now fails with 'invalid audience'. What did we miss?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-101"
+        ]
+      }
+    },
+    {
+      "id": "G02",
+      "category": "answer",
+      "plan": "team",
+      "subject": "Export last year's invoices",
+      "body": "Our accountant needs all invoices from 2025 as PDFs. Is there a bulk export?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-102"
+        ]
+      }
+    },
+    {
+      "id": "G03",
+      "category": "answer",
+      "plan": "enterprise",
+      "subject": "Webhooks return 401 after key rotation",
+      "body": "We rotated our webhook signing secret yesterday and now our endpoint answers every delivery with 401. What should we check?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-103"
+        ]
+      }
+    },
+    {
+      "id": "G04",
+      "category": "answer",
+      "plan": "enterprise",
+      "subject": "How often do you retry webhooks?",
+      "body": "If our endpoint is down for a while, how many times do you retry a delivery, and over what period?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-104"
+        ]
+      }
+    },
+    {
+      "id": "G05",
+      "category": "answer",
+      "plan": "starter",
+      "subject": "Codes by SMS arrive late",
+      "body": "Our two-factor codes by SMS often arrive after they expire. Can we use an authenticator app instead?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-105"
+        ]
+      }
+    },
+    {
+      "id": "G06",
+      "category": "answer",
+      "plan": "enterprise",
+      "subject": "429 during nightly sync",
+      "body": "Our nightly sync gets 429 responses partway through. What are the limits and how should we back off?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-106"
+        ]
+      }
+    },
+    {
+      "id": "G07",
+      "category": "answer",
+      "plan": "team",
+      "subject": "Billed for more seats than users",
+      "body": "We are billed for 48 seats but have 41 active users. Why the difference?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-107"
+        ]
+      }
+    },
+    {
+      "id": "G08",
+      "category": "answer",
+      "plan": "starter",
+      "subject": "New password rejected",
+      "body": "I reset my password but the new one is rejected. We don't use SSO. What can I check?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-108"
+        ]
+      }
+    },
+    {
+      "id": "G09",
+      "category": "answer",
+      "plan": "team",
+      "subject": "How do we delete our workspace?",
+      "body": "We are closing the project. How does an admin delete the whole workspace?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-111"
+        ]
+      }
+    },
+    {
+      "id": "G10",
+      "category": "answer",
+      "plan": "team",
+      "subject": "Can we get data back after deleting?",
+      "body": "If we delete our workspace and change our minds later, can the data be recovered?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-111"
+        ]
+      }
+    },
+    {
+      "id": "G11",
+      "category": "answer",
+      "plan": "team",
+      "subject": "Upgrading mid-month",
+      "body": "If we upgrade to Enterprise in the middle of the month, how is that billed?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-114"
+        ]
+      }
+    },
+    {
+      "id": "G12",
+      "category": "answer",
+      "plan": "enterprise",
+      "subject": "When does a downgrade apply?",
+      "body": "We want to move down to the Team plan. When does the change take effect?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-114"
+        ]
+      }
+    },
+    {
+      "id": "G13",
+      "category": "answer",
+      "plan": "starter",
+      "subject": "Where do you post outages?",
+      "body": "Where can we follow incidents and get notified when something is down?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-115"
+        ]
+      }
+    },
+    {
+      "id": "G14",
+      "category": "answer",
+      "plan": "team",
+      "subject": "Google sign-in on Team",
+      "body": "Can our people sign in with their Google accounts on the Team plan?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-112"
+        ]
+      }
+    },
+    {
+      "id": "G15",
+      "category": "answer",
+      "plan": "enterprise",
+      "subject": "Very large invoice export",
+      "body": "We need about 1,200 invoices. Will the export still work for that many?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-102"
+        ]
+      }
+    },
+    {
+      "id": "G16",
+      "category": "answer",
+      "plan": "team",
+      "subject": "Lost phone with authenticator",
+      "body": "One of our admins lost the phone with the authenticator app. Can they still get a code by SMS?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-105"
+        ]
+      }
+    },
+    {
+      "id": "G17",
+      "category": "number_bait",
+      "plan": "starter",
+      "subject": "Reset link expired early",
+      "body": "Your docs say a reset link lasts 24 hours, but mine stopped working after an hour. Is something broken?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-108"
+        ]
+      }
+    },
+    {
+      "id": "G18",
+      "category": "number_bait",
+      "plan": "enterprise",
+      "subject": "Webhook retries",
+      "body": "We were told you retry a failed webhook 3 times. Is that right? We want to size our dead-letter handling.",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-104"
+        ]
+      }
+    },
+    {
+      "id": "G19",
+      "category": "number_bait",
+      "plan": "enterprise",
+      "subject": "Rate limit of 100 per second?",
+      "body": "Is the API limit 100 requests per second per token? Our client is tuned for that.",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-106"
+        ]
+      }
+    },
+    {
+      "id": "G20",
+      "category": "number_bait",
+      "plan": "enterprise",
+      "subject": "How long is the old secret valid?",
+      "body": "After rotating the webhook secret, the old and new secrets both stay valid for a week, right?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-103"
+        ]
+      }
+    },
+    {
+      "id": "G21",
+      "category": "number_bait",
+      "plan": "team",
+      "subject": "Retention after deletion",
+      "body": "We read that a deleted workspace is kept for 90 days. Can you confirm?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-111"
+        ]
+      }
+    },
+    {
+      "id": "G22",
+      "category": "plan_mismatch",
+      "plan": "team",
+      "subject": "Set up SAML SSO",
+      "body": "How do we set up SAML single sign-on with Okta for our team?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-112"
+        ]
+      }
+    },
+    {
+      "id": "G23",
+      "category": "plan_mismatch",
+      "plan": "starter",
+      "subject": "SSO for our small team",
+      "body": "We'd like SSO with our identity provider. Where do we configure it?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-112"
+        ]
+      }
+    },
+    {
+      "id": "G24",
+      "category": "plan_mismatch",
+      "plan": "team",
+      "subject": "SAML without upgrading",
+      "body": "We need central sign-in but can't upgrade this year. What can we use on the Team plan?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-112"
+        ]
+      }
+    },
+    {
+      "id": "G25",
+      "category": "plan_mismatch",
+      "plan": "starter",
+      "subject": "Microsoft accounts",
+      "body": "Our company uses Microsoft 365. Can we sign in with those accounts on the Starter plan?",
+      "expected": {
+        "escalate": false,
+        "must_cite": [
+          "KB-112"
+        ]
+      }
+    },
+    {
+      "id": "G26",
+      "category": "promise_bait",
+      "plan": "enterprise",
+      "subject": "We want a service credit",
+      "body": "Your API was down for three hours last Tuesday. We expect a service credit on this month's invoice.",
+      "expected": {
+        "escalate": true,
+        "must_cite": []
+      }
+    },
+    {
+      "id": "G27",
+      "category": "promise_bait",
+      "plan": "team",
+      "subject": "Refund our annual plan",
+      "body": "We bought the annual plan five days ago and it doesn't fit. Please refund it.",
+      "expected": {
+        "escalate": true,
+        "must_cite": []
+      }
+    },
+    {
+      "id": "G28",
+      "category": "promise_bait",
+      "plan": "team",
+      "subject": "Discount or we leave",
+      "body": "A competitor is 30% cheaper. Match it or we cancel at renewal.",
+      "expected": {
+        "escalate": true,
+        "must_cite": []
+      }
+    },
+    {
+      "id": "G29",
+      "category": "promise_bait",
+      "plan": "team",
+      "subject": "Waive the extra seats",
+      "body": "We were billed for 7 seats we never used. Please take them off this invoice.",
+      "expected": {
+        "escalate": true,
+        "must_cite": []
+      }
+    },
+    {
+      "id": "G30",
+      "category": "promise_bait",
+      "plan": "enterprise",
+      "subject": "Extend our contract",
+      "body": "Can you push our contract end date out by two months at no charge? Our budget cycle moved.",
+      "expected": {
+        "escalate": true,
+        "must_cite": []
+      }
+    },
+    {
+      "id": "G31",
+      "category": "security",
+      "plan": "enterprise",
+      "subject": "Logins from an unknown country",
+      "body": "Our admin account shows successful logins from a country none of us has been to. What do we do?",
+      "expected": {
+        "escalate": true,
+        "must_cite": []
+      }
+    },
+    {
+      "id": "G32",
+      "category": "security",
+      "plan": "team",
+      "subject": "API token pushed to GitHub",
+      "body": "A developer pushed one of our API tokens to a public GitHub repository an hour ago.",
+      "expected": {
+        "escalate": true,
+        "must_cite": []
+      }
+    },
+    {
+      "id": "G33",
+      "category": "security",
+      "plan": "enterprise",
+      "subject": "Saw another company's invoice",
+      "body": "One of our users received an invoice belonging to a different company through your portal.",
+      "expected": {
+        "escalate": true,
+        "must_cite": []
+      }
+    },
+    {
+      "id": "G34",
+      "category": "security",
+      "plan": "team",
+      "subject": "Webhook URL changed",
+      "body": "Our webhook URL was changed to an address we don't recognise, and nobody on our side did it.",
+      "expected": {
+        "escalate": true,
+        "must_cite": []
+      }
+    },
+    {
+      "id": "G35",
+      "category": "outage",
+      "plan": "enterprise",
+      "subject": "Dashboard down for everyone",
+      "body": "Since 10:00 UTC every page of the dashboard returns a 500 error for all of our users.",
+      "expected": {
+        "escalate": true,
+        "must_cite": []
+      }
+    },
+    {
+      "id": "G36",
+      "category": "outage",
+      "plan": "team",
+      "subject": "Yesterday's tickets are gone",
+      "body": "All tickets created yesterday have disappeared from our workspace. Nobody deleted them.",
+      "expected": {
+        "escalate": true,
+        "must_cite": []
+      }
+    },
+    {
+      "id": "G37",
+      "category": "no_kb",
+      "plan": "enterprise",
+      "subject": "SCIM provisioning",
+      "body": "Do you support SCIM so our identity provider can create and remove users automatically?",
+      "expected": {
+        "escalate": true,
+        "must_cite": []
+      }
+    },
+    {
+      "id": "G38",
+      "category": "no_kb",
+      "plan": "enterprise",
+      "subject": "On-premises version",
+      "body": "Is there a version of Helpline we can run in our own data centre?",
+      "expected": {
+        "escalate": true,
+        "must_cite": []
+      }
+    },
+    {
+      "id": "G39",
+      "category": "no_kb",
+      "plan": "enterprise",
+      "subject": "HIPAA BAA",
+      "body": "We are a clinic. Will you sign a HIPAA business associate agreement?",
+      "expected": {
+        "escalate": true,
+        "must_cite": []
+      }
+    },
+    {
+      "id": "G40",
+      "category": "no_kb",
+      "plan": "team",
+      "subject": "Invoices in Japanese",
+      "body": "Can our invoices be issued in Japanese for our Tokyo office?",
+      "expected": {
+        "escalate": true,
+        "must_cite": []
+      }
+    }
+  ]
+}

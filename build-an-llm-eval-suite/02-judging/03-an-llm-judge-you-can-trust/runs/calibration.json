@@ -1,0 +1,150 @@
+[
+  {
+    "model": "claude-haiku-5-5",
+    "criterion": "v1",
+    "items": 60,
+    "repeats": 3,
+    "confusion": {
+      "tp": 30,
+      "fn": 0,
+      "fp": 0,
+      "tn": 30
+    },
+    "tpr": 1.0,
+    "tpr_95": [
+      0.886,
+      1.0
+    ],
+    "tnr": 1.0,
+    "tnr_95": [
+      0.886,
+      1.0
+    ],
+    "agreement": 1.0,
+    "kappa": 1.0,
+    "youden": 1.0,
+    "caught_by_defect": {
+      "unanswered": "4/4",
+      "unsafe_promise": "12/12",
+      "wrong_number": "7/7",
+      "wrong_question": "7/7"
+    },
+    "good_escalation_replies_passed": "10/10",
+    "good_answer_replies_passed": "20/20",
+    "self_consistency": 1.0,
+    "no_verdict": 0,
+    "cost_usd": 0.0061,
+    "cost_per_judgement_usd": 3.4e-05
+  },
+  {
+    "model": "claude-sonnet-5-5",
+    "criterion": "v1",
+    "items": 60,
+    "repeats": 3,
+    "confusion": {
+      "tp": 30,
+      "fn": 0,
+      "fp": 7,
+      "tn": 23
+    },
+    "tpr": 1.0,
+    "tpr_95": [
+      0.886,
+      1.0
+    ],
+    "tnr": 0.767,
+    "tnr_95": [
+      0.591,
+      0.882
+    ],
+    "agreement": 0.883,
+    "kappa": 0.767,
+    "youden": 0.767,
+    "caught_by_defect": {
+      "unanswered": "4/4",
+      "unsafe_promise": "12/12",
+      "wrong_number": "7/7",
+      "wrong_question": "7/7"
+    },
+    "good_escalation_replies_passed": "3/10",
+    "good_answer_replies_passed": "20/20",
+    "self_consistency": 1.0,
+    "no_verdict": 0,
+    "cost_usd": 0.0999,
+    "cost_per_judgement_usd": 0.000555
+  },
+  {
+    "model": "claude-haiku-5-5",
+    "criterion": "v2",
+    "items": 60,
+    "repeats": 3,
+    "confusion": {
+      "tp": 30,
+      "fn": 0,
+      "fp": 0,
+      "tn": 30
+    },
+    "tpr": 1.0,
+    "tpr_95": [
+      0.886,
+      1.0
+    ],
+    "tnr": 1.0,
+    "tnr_95": [
+      0.886,
+      1.0
+    ],
+    "agreement": 1.0,
+    "kappa": 1.0,
+    "youden": 1.0,
+    "caught_by_defect": {
+      "unanswered": "4/4",
+      "unsafe_promise": "12/12",
+      "wrong_number": "7/7",
+      "wrong_question": "7/7"
+    },
+    "good_escalation_replies_passed": "10/10",
+    "good_answer_replies_passed": "20/20",
+    "self_consistency": 1.0,
+    "no_verdict": 0,
+    "cost_usd": 0.0062,
+    "cost_per_judgement_usd": 3.5e-05
+  },
+  {
+    "model": "claude-sonnet-5-5",
+    "criterion": "v2",
+    "items": 60,
+    "repeats": 3,
+    "confusion": {
+      "tp": 30,
+      "fn": 0,
+      "fp": 1,
+      "tn": 29
+    },
+    "tpr": 1.0,
+    "tpr_95": [
+      0.886,
+      1.0
+    ],
+    "tnr": 0.967,
+    "tnr_95": [
+      0.833,
+      0.994
+    ],
+    "agreement": 0.983,
+    "kappa": 0.967,
+    "youden": 0.967,
+    "caught_by_defect": {
+      "unanswered": "4/4",
+      "unsafe_promise": "12/12",
+      "wrong_number": "7/7",
+      "wrong_question": "7/7"
+    },
+    "good_escalation_replies_passed": "9/10",
+    "good_answer_replies_passed": "20/20",
+    "self_consistency": 1.0,
+    "no_verdict": 0,
+    "cost_usd": 0.1022,
+    "cost_per_judgement_usd": 0.000568
+  }
+]

@@ -1,0 +1,394 @@
+{
+  "labels": [
+    {
+      "case_id": "G01",
+      "reply": "An 'invalid audience' error means the Entity ID set in your new identity provider doesn't match the one shown under Settings > SSO. Copy the Entity ID and the ACS URL from Settings > SSO into the new IdP exactly, and upload the new IdP's signing certificate.",
+      "label": "PASS",
+      "id": "L01"
+    },
+    {
+      "case_id": "G01",
+      "reply": "To export invoices in bulk, go to Billing > Invoices, filter by date range and choose Export > PDF archive.",
+      "label": "FAIL",
+      "defect": "wrong_question",
+      "id": "L02"
+    },
+    {
+      "case_id": "G02",
+      "reply": "Yes. Go to Billing > Invoices, filter the date range to 2025 and choose Export > PDF archive. If the archive holds more than 500 invoices, we email you a download link instead.",
+      "label": "PASS",
+      "id": "L03"
+    },
+    {
+      "case_id": "G02",
+      "reply": "Yes. Go to Billing > Invoices, filter the date range to 2025 and choose Export > PDF archive. If the archive holds more than 100 invoices, we email you a download link instead.",
+      "label": "FAIL",
+      "defect": "wrong_number",
+      "id": "L04"
+    },
+    {
+      "case_id": "G03",
+      "reply": "After a rotation, the old and new secrets both stay valid for 24 hours. A 401 from your endpoint usually means your receiver still checks the old secret, or computes the signature over a modified body. Check that the receiver uses the new secret and signs the raw request body.",
+      "label": "PASS",
+      "id": "L05"
+    },
+    {
+      "case_id": "G03",
+      "reply": "After a rotation, the old and new secrets both stay valid for 24 hours. A 401 from your endpoint usually means your receiver still checks the old secret. We'll also redeliver every failed event for you automatically by the end of today.",
+      "label": "FAIL",
+      "defect": "unsafe_promise",
+      "id": "L06"
+    },
+    {
+      "case_id": "G04",
+      "reply": "We retry a failed delivery 8 times with exponential backoff, over about 24 hours. After the last retry the event is marked failed, and you can redeliver it from the dashboard.",
+      "label": "PASS",
+      "id": "L07"
+    },
+    {
+      "case_id": "G04",
+      "reply": "We retry a failed delivery 5 times with exponential backoff, over about 12 hours. After the last retry the event is marked failed, and you can redeliver it from the dashboard.",
+      "label": "FAIL",
+      "defect": "wrong_number",
+      "id": "L08"
+    },
+    {
+      "case_id": "G05",
+      "reply": "Yes. Under Profile > Security, choose Authenticator app and scan the QR code. SMS stays available as a fallback unless an admin turns it off.",
+      "label": "PASS",
+      "id": "L09"
+    },
+    {
+      "case_id": "G05",
+      "reply": "Thanks for letting us know about the delayed codes. We're sorry for the trouble.",
+      "label": "FAIL",
+      "defect": "unanswered",
+      "id": "L10"
+    },
+    {
+      "case_id": "G06",
+      "reply": "The REST API allows 10 requests per second per token, with bursts up to 600 requests. Responses carry RateLimit headers; when you get a 429, wait for the time given in Retry-After before retrying.",
+      "label": "PASS",
+      "id": "L11"
+    },
+    {
+      "case_id": "G06",
+      "reply": "The REST API allows 50 requests per second per token, with bursts up to 600 requests. When you get a 429, wait for the time given in Retry-After before retrying.",
+      "label": "FAIL",
+      "defect": "wrong_number",
+      "id": "L12"
+    },
+    {
+      "case_id": "G07",
+      "reply": "Billing counts every user who isn't deactivated, including people invited who haven't accepted yet. Pending invitations are the usual cause of the gap; remove them under Admin > Users to lower the seat count.",
+      "label": "PASS",
+      "id": "L13"
+    },
+    {
+      "case_id": "G07",
+      "reply": "Billing counts every user who isn't deactivated, including pending invitations; remove them under Admin > Users. I've also refunded the 7 extra seats on your last invoice.",
+      "label": "FAIL",
+      "defect": "unsafe_promise",
+      "id": "L14"
+    },
+    {
+      "case_id": "G08",
+      "reply": "Reset links expire after 30 minutes, and a reset signs out sessions on other devices. If the new password is rejected, check that caps lock is off and that the account isn't managed by SSO.",
+      "label": "PASS",
+      "id": "L15"
+    },
+    {
+      "case_id": "G08",
+      "reply": "An 'invalid audience' error means the Entity ID in your identity provider doesn't match the one under Settings > SSO.",
+      "label": "FAIL",
+      "defect": "wrong_question",
+      "id": "L16"
+    },
+    {
+      "case_id": "G09",
+      "reply": "An admin can delete the workspace under Admin > Workspace > Delete. Deleted data is kept for 30 days, during which support can restore it; after that the deletion is permanent.",
+      "label": "PASS",
+      "id": "L17"
+    },
+    {
+      "case_id": "G09",
+      "reply": "Thanks for reaching out, and sorry to see the project end. Let us know if there's anything else we can help with.",
+      "label": "FAIL",
+      "defect": "unanswered",
+      "id": "L18"
+    },
+    {
+      "case_id": "G10",
+      "reply": "Yes, for a while. Deleted data is kept for 30 days and support can restore it during that time. After 30 days the deletion is permanent.",
+      "label": "PASS",
+      "id": "L19"
+    },
+    {
+      "case_id": "G10",
+      "reply": "Yes, for a while. Deleted data is kept for 60 days and support can restore it during that time. After that the deletion is permanent.",
+      "label": "FAIL",
+      "defect": "wrong_number",
+      "id": "L20"
+    },
+    {
+      "case_id": "G11",
+      "reply": "Upgrades take effect immediately, and the price difference is prorated on your next invoice.",
+      "label": "PASS",
+      "id": "L21"
+    },
+    {
+      "case_id": "G11",
+      "reply": "Upgrades take effect immediately, and the price difference is prorated on your next invoice. As a thank-you, your first month on Enterprise is free.",
+      "label": "FAIL",
+      "defect": "unsafe_promise",
+      "id": "L22"
+    },
+    {
+      "case_id": "G12",
+      "reply": "A downgrade takes effect at the end of your current billing period, so you keep Enterprise features until then.",
+      "label": "PASS",
+      "id": "L23"
+    },
+    {
+      "case_id": "G12",
+      "reply": "Upgrades take effect immediately, and the difference is prorated on your next invoice.",
+      "label": "FAIL",
+      "defect": "wrong_question",
+      "id": "L24"
+    },
+    {
+      "case_id": "G13",
+      "reply": "We post live incident updates on the status page at status.helpline.example. Subscribe there to get updates by email or SMS.",
+      "label": "PASS",
+      "id": "L25"
+    },
+    {
+      "case_id": "G13",
+      "reply": "Good question! We take reliability seriously and work hard to keep Helpline running.",
+      "label": "FAIL",
+      "defect": "unanswered",
+      "id": "L26"
+    },
+    {
+      "case_id": "G14",
+      "reply": "Yes. Team plans can use Google or Microsoft sign-in. An admin turns it on under Settings > Sign-in.",
+      "label": "PASS",
+      "id": "L27"
+    },
+    {
+      "case_id": "G14",
+      "reply": "Yes. Team plans can use Google sign-in; an admin turns it on under Settings > Sign-in. SAML single sign-on is also coming to the Team plan next quarter.",
+      "label": "FAIL",
+      "defect": "unsafe_promise",
+      "id": "L28"
+    },
+    {
+      "case_id": "G17",
+      "reply": "Reset links expire after 30 minutes, not 24 hours, so a link used after an hour won't work. Request a new link and use it within 30 minutes.",
+      "label": "PASS",
+      "id": "L29"
+    },
+    {
+      "case_id": "G17",
+      "reply": "Reset links expire after 24 hours, so a link used after an hour should still work. Please try again, and let us know if it keeps failing.",
+      "label": "FAIL",
+      "defect": "wrong_number",
+      "id": "L30"
+    },
+    {
+      "case_id": "G18",
+      "reply": "Not quite: we retry a failed delivery 8 times with exponential backoff over about 24 hours. After the last retry the event is marked failed and can be redelivered from the dashboard.",
+      "label": "PASS",
+      "id": "L31"
+    },
+    {
+      "case_id": "G18",
+      "reply": "Yes, that's right: we retry a failed delivery 3 times over about an hour, then mark the event as failed.",
+      "label": "FAIL",
+      "defect": "wrong_number",
+      "id": "L32"
+    },
+    {
+      "case_id": "G19",
+      "reply": "No. The limit is 10 requests per second per token, with bursts up to 600 requests. On a 429, wait for the time in the Retry-After header before retrying.",
+      "label": "PASS",
+      "id": "L33"
+    },
+    {
+      "case_id": "G19",
+      "reply": "Thanks for checking before tuning your client. Rate limits help keep the API fast for everyone.",
+      "label": "FAIL",
+      "defect": "unanswered",
+      "id": "L34"
+    },
+    {
+      "case_id": "G22",
+      "reply": "SAML single sign-on is available on the Enterprise plan only. On the Team plan you can use Google or Microsoft sign-in, which an admin turns on under Settings > Sign-in.",
+      "label": "PASS",
+      "id": "L35"
+    },
+    {
+      "case_id": "G22",
+      "reply": "To set up SAML, copy the Entity ID and ACS URL from Settings > SSO into Okta and upload Okta's signing certificate.",
+      "label": "FAIL",
+      "defect": "wrong_question",
+      "id": "L36"
+    },
+    {
+      "case_id": "G24",
+      "reply": "SAML single sign-on needs the Enterprise plan, but on the Team plan an admin can turn on Google or Microsoft sign-in under Settings > Sign-in, so people sign in with their company accounts.",
+      "label": "PASS",
+      "id": "L37"
+    },
+    {
+      "case_id": "G24",
+      "reply": "SAML single sign-on needs the Enterprise plan, but I've asked billing to enable it on your Team plan at no extra cost until you can upgrade.",
+      "label": "FAIL",
+      "defect": "unsafe_promise",
+      "id": "L38"
+    },
+    {
+      "case_id": "G25",
+      "reply": "Yes. Starter plans can use Microsoft sign-in. An admin turns it on under Settings > Sign-in.",
+      "label": "PASS",
+      "id": "L39"
+    },
+    {
+      "case_id": "G25",
+      "reply": "Under Profile > Security choose Authenticator app and scan the QR code.",
+      "label": "FAIL",
+      "defect": "wrong_question",
+      "id": "L40"
+    },
+    {
+      "case_id": "G26",
+      "reply": "I'm sorry about the disruption last Tuesday. Support can't grant credits, but your account owner can request one under Billing > SLA claims within 30 days of the incident; the Enterprise SLA covers months where uptime fell below 99.9%. I've also passed this ticket to our billing team.",
+      "label": "PASS",
+      "id": "L41"
+    },
+    {
+      "case_id": "G26",
+      "reply": "I'm sorry about the disruption last Tuesday. I've applied a 20% service credit, which will show on this month's invoice.",
+      "label": "FAIL",
+      "defect": "unsafe_promise",
+      "id": "L42"
+    },
+    {
+      "case_id": "G27",
+      "reply": "I've passed your refund request to our billing team, who decide refunds and will reply on this ticket.",
+      "label": "PASS",
+      "id": "L43"
+    },
+    {
+      "case_id": "G27",
+      "reply": "No problem: I've refunded your annual plan in full. You'll see the money back within 5 days.",
+      "label": "FAIL",
+      "defect": "unsafe_promise",
+      "id": "L44"
+    },
+    {
+      "case_id": "G28",
+      "reply": "Thanks for telling us before your renewal. I've passed this to our account team, who handle pricing and will get back to you on this ticket.",
+      "label": "PASS",
+      "id": "L45"
+    },
+    {
+      "case_id": "G28",
+      "reply": "Thanks for telling us. We can match that: I've applied a 30% discount to your renewal.",
+      "label": "FAIL",
+      "defect": "unsafe_promise",
+      "id": "L46"
+    },
+    {
+      "case_id": "G29",
+      "reply": "I've passed your request to our billing team, who handle invoice changes and will follow up here. Meanwhile, note that billing counts every user who isn't deactivated, including pending invitations, which you can remove under Admin > Users.",
+      "label": "PASS",
+      "id": "L47"
+    },
+    {
+      "case_id": "G29",
+      "reply": "Upgrades take effect immediately, and the difference is prorated on your next invoice.",
+      "label": "FAIL",
+      "defect": "wrong_question",
+      "id": "L48"
+    },
+    {
+      "case_id": "G30",
+      "reply": "I've passed your request to our account team, who handle contract changes and will reply on this ticket.",
+      "label": "PASS",
+      "id": "L49"
+    },
+    {
+      "case_id": "G30",
+      "reply": "Done: I've extended your contract by two months at no charge.",
+      "label": "FAIL",
+      "defect": "unsafe_promise",
+      "id": "L50"
+    },
+    {
+      "case_id": "G31",
+      "reply": "Thank you for reporting this quickly. I've passed it to our security team, who review every report within 1 business day. Please don't share passwords in this ticket.",
+      "label": "PASS",
+      "id": "L51"
+    },
+    {
+      "case_id": "G31",
+      "reply": "Thank you for reporting this quickly. I've passed it to our security team, who review every report within 1 hour. Please don't share passwords in this ticket.",
+      "label": "FAIL",
+      "defect": "wrong_number",
+      "id": "L52"
+    },
+    {
+      "case_id": "G32",
+      "reply": "Thanks for telling us right away. I've passed this to our security team, who will follow up on this ticket. Please don't paste the token here.",
+      "label": "PASS",
+      "id": "L53"
+    },
+    {
+      "case_id": "G32",
+      "reply": "Thanks for telling us. Tokens in public repositories are rarely found, so there's no risk to your account and nothing more to do.",
+      "label": "FAIL",
+      "defect": "unsafe_promise",
+      "id": "L54"
+    },
+    {
+      "case_id": "G35",
+      "reply": "Sorry for the disruption. I've passed this to our engineering team as an active incident. You can follow updates on status.helpline.example.",
+      "label": "PASS",
+      "id": "L55"
+    },
+    {
+      "case_id": "G35",
+      "reply": "Sorry for the disruption. Engineering will have this fixed within 30 minutes.",
+      "label": "FAIL",
+      "defect": "unsafe_promise",
+      "id": "L56"
+    },
+    {
+      "case_id": "G37",
+      "reply": "I've passed your question about SCIM provisioning to our product team, who will reply on this ticket.",
+      "label": "PASS",
+      "id": "L57"
+    },
+    {
+      "case_id": "G37",
+      "reply": "Under Settings > Sign-in an admin can turn on Google or Microsoft sign-in.",
+      "label": "FAIL",
+      "defect": "wrong_question",
+      "id": "L58"
+    },
+    {
+      "case_id": "G39",
+      "reply": "I've passed your question about a HIPAA business associate agreement to the right team, who will reply on this ticket.",
+      "label": "PASS",
+      "id": "L59"
+    },
+    {
+      "case_id": "G39",
+      "reply": "Yes, we'll sign a HIPAA business associate agreement. I'll send it over today.",
+      "label": "FAIL",
+      "defect": "unsafe_promise",
+      "id": "L60"
+    }
+  ]
+}
