@@ -1,0 +1,190 @@
+{
+  "run_on": "2026-11-21",
+  "edit": {
+    "type": "clear_tool_uses_20250919",
+    "trigger": {
+      "type": "input_tokens",
+      "value": 5000
+    },
+    "keep": {
+      "type": "tool_uses",
+      "value": 4
+    },
+    "clear_at_least": {
+      "type": "input_tokens",
+      "value": 1000
+    }
+  },
+  "usd": 0.00477416,
+  "requests": [
+    {
+      "cache_write": 0,
+      "cache_read": 1004,
+      "applied_edits": []
+    },
+    {
+      "cache_write": 0,
+      "cache_read": 1768,
+      "applied_edits": []
+    },
+    {
+      "cache_write": 0,
+      "cache_read": 2129,
+      "applied_edits": []
+    },
+    {
+      "cache_write": 336,
+      "cache_read": 2129,
+      "applied_edits": []
+    },
+    {
+      "cache_write": 226,
+      "cache_read": 2465,
+      "applied_edits": []
+    },
+    {
+      "cache_write": 754,
+      "cache_read": 2691,
+      "applied_edits": []
+    },
+    {
+      "cache_write": 342,
+      "cache_read": 3445,
+      "applied_edits": []
+    },
+    {
+      "cache_write": 219,
+      "cache_read": 3787,
+      "applied_edits": []
+    },
+    {
+      "cache_write": 155,
+      "cache_read": 4006,
+      "applied_edits": []
+    },
+    {
+      "cache_write": 755,
+      "cache_read": 4161,
+      "applied_edits": []
+    },
+    {
+      "cache_write": 467,
+      "cache_read": 4916,
+      "applied_edits": []
+    },
+    {
+      "cache_write": 170,
+      "cache_read": 5383,
+      "applied_edits": []
+    },
+    {
+      "cache_write": 162,
+      "cache_read": 5553,
+      "applied_edits": []
+    },
+    {
+      "cache_write": 191,
+      "cache_read": 5715,
+      "applied_edits": []
+    },
+    {
+      "cache_write": 5019,
+      "cache_read": 0,
+      "applied_edits": [
+        {
+          "cleared_input_tokens": 1617,
+          "cleared_tool_uses": 3,
+          "type": "clear_tool_uses_20250919"
+        }
+      ]
+    },
+    {
+      "cache_write": 349,
+      "cache_read": 5019,
+      "applied_edits": [
+        {
+          "cleared_input_tokens": 1612,
+          "cleared_tool_uses": 3,
+          "type": "clear_tool_uses_20250919"
+        }
+      ]
+    },
+    {
+      "cache_write": 186,
+      "cache_read": 5368,
+      "applied_edits": [
+        {
+          "cleared_input_tokens": 1610,
+          "cleared_tool_uses": 3,
+          "type": "clear_tool_uses_20250919"
+        }
+      ]
+    },
+    {
+      "cache_write": 758,
+      "cache_read": 5554,
+      "applied_edits": [
+        {
+          "cleared_input_tokens": 1620,
+          "cleared_tool_uses": 3,
+          "type": "clear_tool_uses_20250919"
+        }
+      ]
+    },
+    {
+      "cache_write": 477,
+      "cache_read": 6312,
+      "applied_edits": [
+        {
+          "cleared_input_tokens": 1622,
+          "cleared_tool_uses": 3,
+          "type": "clear_tool_uses_20250919"
+        }
+      ]
+    },
+    {
+      "cache_write": 141,
+      "cache_read": 6789,
+      "applied_edits": [
+        {
+          "cleared_input_tokens": 1622,
+          "cleared_tool_uses": 3,
+          "type": "clear_tool_uses_20250919"
+        }
+      ]
+    },
+    {
+      "cache_write": 6452,
+      "cache_read": 0,
+      "applied_edits": [
+        {
+          "cleared_input_tokens": 2906,
+          "cleared_tool_uses": 6,
+          "type": "clear_tool_uses_20250919"
+        }
+      ]
+    },
+    {
+      "cache_write": 313,
+      "cache_read": 6452,
+      "applied_edits": [
+        {
+          "cleared_input_tokens": 2903,
+          "cleared_tool_uses": 6,
+          "type": "clear_tool_uses_20250919"
+        }
+      ]
+    },
+    {
+      "cache_write": 206,
+      "cache_read": 6765,
+      "applied_edits": [
+        {
+          "cleared_input_tokens": 2909,
+          "cleared_tool_uses": 6,
+          "type": "clear_tool_uses_20250919"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "model": "claude-haiku-5-5",
+  "run_on": "2026-11-21",
+  "spent_usd": 0.080657265,
+  "runs": [
+    {
+      "wording": "inviting (experiment 7's final wording)",
+      "requests": 93,
+      "usd": 0.03915,
+      "refetches_of_finished_tickets": 0,
+      "refetched": [],
+      "handled": 24,
+      "retention": 1.0
+    },
+    {
+      "wording": "done (this tutorial's STUB)",
+      "requests": 96,
+      "usd": 0.041507,
+      "refetches_of_finished_tickets": 1,
+      "refetched": [
+        [
+          "HL-2004",
+          "HL-2003"
+        ]
+      ],
+      "handled": 24,
+      "retention": 1.0
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+# Add to your workflow: the tests plus the policy gate. No keys needed.
+name: copilot-context
+on: [pull_request]
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v7
+      - run: uv run pytest
+      - run: uv run python check_policy.py   # exits 1 when the chosen policy regresses
