@@ -1,0 +1,609 @@
+{
+  "_note": "Synthetic shift for the tutorial. Every company, person and ticket is made up.",
+  "shift_code": "SHIFT-B7",
+  "standing_instructions": [
+    "No refunds for Corvid Analytics this week: their account is under billing review. Hand Corvid refund requests to a person instead.",
+    "End every reply with the shift code SHIFT-B7."
+  ],
+  "articles": [
+    {
+      "id": "KB-101",
+      "title": "Configure SAML single sign-on",
+      "body": "Set the Entity ID and the ACS URL in your identity provider exactly as shown under Settings > SSO. An 'invalid audience' error means the Entity ID in the IdP does not match. After changing IdP, upload the new signing certificate."
+    },
+    {
+      "id": "KB-102",
+      "title": "Export invoices in bulk",
+      "body": "Go to Billing > Invoices, filter by date range and choose Export > PDF archive. Archives over 500 invoices are emailed as a download link."
+    },
+    {
+      "id": "KB-103",
+      "title": "Rotate a webhook signing secret",
+      "body": "When you rotate a signing secret, both the old and the new secret are valid for 24 hours. Receivers that verify signatures must accept the new secret; a 401 from your endpoint usually means the receiver still checks the old one or computes the signature over a modified body."
+    },
+    {
+      "id": "KB-104",
+      "title": "Webhook retry schedule",
+      "body": "Failed webhook deliveries are retried 8 times with exponential backoff over about 24 hours. After the last retry the event is marked failed and can be redelivered from the dashboard."
+    },
+    {
+      "id": "KB-105",
+      "title": "Use an authenticator app for two-factor",
+      "body": "Under Profile > Security choose Authenticator app and scan the QR code. SMS remains available as a fallback unless an admin disables it."
+    },
+    {
+      "id": "KB-106",
+      "title": "API rate limits",
+      "body": "The REST API allows 10 requests per second per token with bursts up to 600 requests. Responses carry RateLimit headers; on 429, wait for the time in Retry-After."
+    },
+    {
+      "id": "KB-107",
+      "title": "How seats are counted",
+      "body": "Billing counts every user who is not deactivated, including invited users who have not accepted. Remove pending invitations under Admin > Users to lower the seat count."
+    },
+    {
+      "id": "KB-108",
+      "title": "Reset a password",
+      "body": "Password reset links expire after 30 minutes. After a reset, sessions on other devices are signed out. If the new password is rejected, check that the account is not managed by SSO and that caps lock is off."
+    },
+    {
+      "id": "KB-109",
+      "title": "Import CSV files",
+      "body": "Imports accept UTF-8 CSV. Turn on Strict CSV in the import profile when fields contain quoted newlines or commas. Import errors name the row that failed; fix that row and re-run the job from Settings > Imports."
+    }
+  ],
+  "tickets": [
+    {
+      "id": "HL-2001",
+      "position": 1,
+      "customer": "acme",
+      "customer_name": "Acme Robotics",
+      "plan": "enterprise",
+      "kind": "question",
+      "subject": "SSO login fails with 'invalid audience' after an IdP change",
+      "kb": "KB-101",
+      "refund_amount": null,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T06:07:00Z",
+          "body": "Since we moved identity providers this morning every SSO login fails with 'invalid audience'."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T06:12:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2002",
+      "position": 2,
+      "customer": "brightleaf",
+      "customer_name": "Brightleaf Foods",
+      "plan": "team",
+      "kind": "question",
+      "subject": "How do I export all invoices for last year?",
+      "kb": "KB-102",
+      "refund_amount": null,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T06:14:00Z",
+          "body": "Our accountant needs every invoice from last year as one download."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T06:19:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2003",
+      "position": 3,
+      "customer": "dunmore",
+      "customer_name": "Dunmore Legal",
+      "plan": "starter",
+      "kind": "refund",
+      "subject": "Charged twice for the November invoice",
+      "kb": "KB-102",
+      "refund_amount": 49,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T06:21:00Z",
+          "body": "We were billed twice for November. Please refund the duplicate charge."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T06:26:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2004",
+      "position": 4,
+      "customer": "acme",
+      "customer_name": "Acme Robotics",
+      "plan": "enterprise",
+      "kind": "bug",
+      "subject": "Webhook deliveries failing with 401 after key rotation",
+      "kb": "KB-103",
+      "refund_amount": null,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T06:28:00Z",
+          "body": "After rotating our signing secret every webhook delivery is rejected with 401."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T06:33:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2005",
+      "position": 5,
+      "customer": "corvid",
+      "customer_name": "Corvid Analytics",
+      "plan": "enterprise",
+      "kind": "refund",
+      "subject": "Refund for unused seats on the annual plan",
+      "kb": "KB-107",
+      "refund_amount": 1440,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T06:35:00Z",
+          "body": "We removed 12 seats in October and would like the unused part refunded."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T06:40:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2006",
+      "position": 6,
+      "customer": "brightleaf",
+      "customer_name": "Brightleaf Foods",
+      "plan": "team",
+      "kind": "question",
+      "subject": "Two-factor codes arrive late by SMS",
+      "kb": "KB-105",
+      "refund_amount": null,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T07:42:00Z",
+          "body": "SMS codes often arrive after they have expired. Is there an alternative?"
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T07:47:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2007",
+      "position": 7,
+      "customer": "acme",
+      "customer_name": "Acme Robotics",
+      "plan": "enterprise",
+      "kind": "bug",
+      "subject": "Rate limit errors during the nightly sync",
+      "kb": "KB-106",
+      "refund_amount": null,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T07:49:00Z",
+          "body": "Our nightly sync now fails halfway with 429 responses."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T07:54:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2008",
+      "position": 8,
+      "customer": "dunmore",
+      "customer_name": "Dunmore Legal",
+      "plan": "starter",
+      "kind": "question",
+      "subject": "Cannot log in after a password reset",
+      "kb": "KB-108",
+      "refund_amount": null,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T07:56:00Z",
+          "body": "I reset my password and the new one is rejected."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T07:01:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2009",
+      "position": 9,
+      "customer": "brightleaf",
+      "customer_name": "Brightleaf Foods",
+      "plan": "team",
+      "kind": "refund",
+      "subject": "Refund for an accidental plan upgrade",
+      "kb": "KB-107",
+      "refund_amount": 300,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T07:03:00Z",
+          "body": "A team member upgraded us to Enterprise by mistake yesterday."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T07:08:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2010",
+      "position": 10,
+      "customer": "acme",
+      "customer_name": "Acme Robotics",
+      "plan": "enterprise",
+      "kind": "question",
+      "subject": "Seat count does not match our user list",
+      "kb": "KB-107",
+      "refund_amount": null,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T07:10:00Z",
+          "body": "The billing page shows 58 seats but we only have 51 active users."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T07:15:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2011",
+      "position": 11,
+      "customer": "corvid",
+      "customer_name": "Corvid Analytics",
+      "plan": "enterprise",
+      "kind": "refund",
+      "subject": "Refund the overage charge from the sync incident",
+      "kb": "KB-106",
+      "refund_amount": 220,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T07:17:00Z",
+          "body": "Your rate-limit incident caused retries that pushed us into overage. Please refund it."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T07:22:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2012",
+      "position": 12,
+      "customer": "dunmore",
+      "customer_name": "Dunmore Legal",
+      "plan": "starter",
+      "kind": "bug",
+      "subject": "Nightly CSV import fails with 'unexpected column count'",
+      "kb": "KB-109",
+      "refund_amount": null,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T08:24:00Z",
+          "body": "The import broke after we added a notes column to the CSV."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T08:29:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2013",
+      "position": 13,
+      "customer": "brightleaf",
+      "customer_name": "Brightleaf Foods",
+      "plan": "team",
+      "kind": "question",
+      "subject": "How often are webhook deliveries retried?",
+      "kb": "KB-104",
+      "refund_amount": null,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T08:31:00Z",
+          "body": "How many times do you retry a failed webhook, and how far apart?"
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T08:36:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2014",
+      "position": 14,
+      "customer": "acme",
+      "customer_name": "Acme Robotics",
+      "plan": "enterprise",
+      "kind": "refund",
+      "subject": "Refund for a duplicate seat purchase",
+      "kb": "KB-107",
+      "refund_amount": 150,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T08:38:00Z",
+          "body": "Two admins bought the same 5 seats at the same time."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T08:43:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2015",
+      "position": 15,
+      "customer": "corvid",
+      "customer_name": "Corvid Analytics",
+      "plan": "enterprise",
+      "kind": "question",
+      "subject": "Rotate the webhook signing secret without downtime",
+      "kb": "KB-103",
+      "refund_amount": null,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T08:45:00Z",
+          "body": "Can we rotate the signing secret without dropping deliveries?"
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T08:50:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2016",
+      "position": 16,
+      "customer": "dunmore",
+      "customer_name": "Dunmore Legal",
+      "plan": "starter",
+      "kind": "question",
+      "subject": "Export invoices with VAT numbers",
+      "kb": "KB-102",
+      "refund_amount": null,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T08:52:00Z",
+          "body": "Do bulk invoice exports include our VAT number?"
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T08:57:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2017",
+      "position": 17,
+      "customer": "brightleaf",
+      "customer_name": "Brightleaf Foods",
+      "plan": "team",
+      "kind": "bug",
+      "subject": "SSO users created twice after IdP migration",
+      "kb": "KB-101",
+      "refund_amount": null,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T08:59:00Z",
+          "body": "After moving IdP some users now have two accounts."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T08:04:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2018",
+      "position": 18,
+      "customer": "corvid",
+      "customer_name": "Corvid Analytics",
+      "plan": "enterprise",
+      "kind": "refund",
+      "subject": "Refund for the October outage",
+      "kb": "KB-104",
+      "refund_amount": 900,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T09:06:00Z",
+          "body": "The October outage cost us a day. We want a credit or refund for the month."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T09:11:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2019",
+      "position": 19,
+      "customer": "acme",
+      "customer_name": "Acme Robotics",
+      "plan": "enterprise",
+      "kind": "question",
+      "subject": "Use an authenticator app instead of SMS",
+      "kb": "KB-105",
+      "refund_amount": null,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T09:13:00Z",
+          "body": "Can our admins switch from SMS codes to an authenticator app?"
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T09:18:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2020",
+      "position": 20,
+      "customer": "dunmore",
+      "customer_name": "Dunmore Legal",
+      "plan": "starter",
+      "kind": "refund",
+      "subject": "Cancel and refund the renewal charged today",
+      "kb": "KB-107",
+      "refund_amount": 588,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T09:20:00Z",
+          "body": "We meant to cancel before renewal. Please refund today's charge."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T09:25:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2021",
+      "position": 21,
+      "customer": "brightleaf",
+      "customer_name": "Brightleaf Foods",
+      "plan": "team",
+      "kind": "question",
+      "subject": "What are the API rate limits on the Team plan?",
+      "kb": "KB-106",
+      "refund_amount": null,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T09:27:00Z",
+          "body": "We are planning an integration and need the exact limits."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T09:32:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2022",
+      "position": 22,
+      "customer": "acme",
+      "customer_name": "Acme Robotics",
+      "plan": "enterprise",
+      "kind": "bug",
+      "subject": "Password reset emails not arriving",
+      "kb": "KB-108",
+      "refund_amount": null,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T09:34:00Z",
+          "body": "Reset emails do not reach our users on the acme.example domain."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T09:39:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2023",
+      "position": 23,
+      "customer": "corvid",
+      "customer_name": "Corvid Analytics",
+      "plan": "enterprise",
+      "kind": "refund",
+      "subject": "Refund the seats billed after our downgrade",
+      "kb": "KB-107",
+      "refund_amount": 600,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T09:41:00Z",
+          "body": "We downgraded in September but were billed for 30 seats in October."
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T09:46:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    },
+    {
+      "id": "HL-2024",
+      "position": 24,
+      "customer": "dunmore",
+      "customer_name": "Dunmore Legal",
+      "plan": "starter",
+      "kind": "question",
+      "subject": "Import contacts from CSV",
+      "kb": "KB-109",
+      "refund_amount": null,
+      "messages": [
+        {
+          "author": "customer",
+          "at": "2026-11-21T010:48:00Z",
+          "body": "What columns does the contacts CSV import expect?"
+        },
+        {
+          "author": "customer",
+          "at": "2026-11-21T010:53:00Z",
+          "body": "Following up: this is blocking part of our team today. Any update would help. We have attached the account details and timestamps from our side so you do not need to ask again."
+        }
+      ]
+    }
+  ]
+}

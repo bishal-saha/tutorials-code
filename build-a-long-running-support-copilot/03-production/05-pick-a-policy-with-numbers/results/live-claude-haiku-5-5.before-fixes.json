@@ -1,0 +1,63 @@
+{
+  "model": "claude-haiku-5-5",
+  "run_on": "2026-11-21",
+  "cap_usd": 3.0,
+  "spent_usd": 0.150239745,
+  "policies": [
+    {
+      "name": "raw",
+      "requests": 93,
+      "mean_window": 19299,
+      "final_window": 37733,
+      "cache_hit": 0.9798324506049095,
+      "cache_write_tokens": 35963,
+      "usd": 0.029098945,
+      "handled": 24,
+      "retention": 1.0
+    },
+    {
+      "name": "trim",
+      "requests": 94,
+      "mean_window": 12152,
+      "final_window": 23872,
+      "cache_hit": 0.9801906959562022,
+      "cache_write_tokens": 22393,
+      "usd": 0.020915855,
+      "handled": 24,
+      "retention": 1.0
+    },
+    {
+      "name": "clear",
+      "requests": 96,
+      "mean_window": 18589,
+      "final_window": 34898,
+      "cache_hit": 0.9498456228041174,
+      "cache_write_tokens": 89265,
+      "usd": 0.045570975,
+      "handled": 24,
+      "retention": 1.0
+    },
+    {
+      "name": "summary+pin",
+      "requests": 92,
+      "mean_window": 2917,
+      "final_window": 3747,
+      "cache_hit": 0.6647602369685904,
+      "cache_write_tokens": 89743,
+      "usd": 0.036825125,
+      "handled": 19,
+      "retention": 1.0
+    },
+    {
+      "name": "fresh",
+      "requests": 100,
+      "mean_window": 1907,
+      "final_window": 2487,
+      "cache_hit": 0.6858302014372651,
+      "cache_write_tokens": 59689,
+      "usd": 0.017828845,
+      "handled": 24,
+      "retention": 1.0
+    }
+  ]
+}

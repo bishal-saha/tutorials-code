@@ -1,0 +1,14 @@
+[project]
+name = "build-a-long-running-support-copilot"
+version = "0.1.0"
+description = "Companion code for Build a long-running support copilot on iambishal.com"
+requires-python = ">=3.12"
+dependencies = ["anthropic==2.12.0"]
+
+[dependency-groups]
+dev = ["pytest>=8", "anyio>=4.9"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["live: calls a real model; never runs in CI"]
+addopts = "-m 'not live'"

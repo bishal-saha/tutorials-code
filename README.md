@@ -22,6 +22,7 @@ Each series has one folder, named after its URL slug. Inside it, every lesson ha
 | [Build a production MCP server](https://iambishal.com/tutorials/build-a-production-mcp-server) | [`build-a-production-mcp-server`](build-a-production-mcp-server) | 5 (Python 3.12, mcp 2.3.0) |
 | [Build a bounded agent](https://iambishal.com/tutorials/build-a-bounded-agent) | [`build-a-bounded-agent`](build-a-bounded-agent) | 5 (Python 3.12, anthropic 2.12.0, mcp 2.3.0) |
 | [Build an eval suite for an LLM feature](https://iambishal.com/tutorials/build-an-llm-eval-suite) | [`build-an-llm-eval-suite`](build-an-llm-eval-suite) | 5 (Python 3.12, anthropic 2.12.0) |
+| [Build a long-running support copilot](https://iambishal.com/tutorials/build-a-long-running-support-copilot) | [`build-a-long-running-support-copilot`](build-a-long-running-support-copilot) | 5 (Python 3.12, anthropic 2.12.0) |
 
 ## Use one series
 
