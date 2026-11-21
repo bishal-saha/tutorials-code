@@ -1,0 +1,63 @@
+{
+  "model": "claude-sonnet-5-5",
+  "run_on": "2026-11-21",
+  "cap_usd": 3.0,
+  "spent_usd": 1.9431547999999998,
+  "policies": [
+    {
+      "name": "trim",
+      "requests": 90,
+      "mean_window": 14700,
+      "final_window": 28791,
+      "cache_hit": 0.9780673873985549,
+      "cache_write_tokens": 28789,
+      "usd": 0.3458475,
+      "handled": 24,
+      "retention": 1.0
+    },
+    {
+      "name": "fresh",
+      "requests": 99,
+      "mean_window": 1951,
+      "final_window": 2822,
+      "cache_hit": 0.6839009945071728,
+      "cache_write_tokens": 60812,
+      "usd": 0.3250123,
+      "handled": 24,
+      "retention": 1.0
+    },
+    {
+      "name": "raw",
+      "requests": 86,
+      "mean_window": 22853,
+      "final_window": 45536,
+      "cache_hit": 0.9777947605363205,
+      "cache_write_tokens": 43422,
+      "usd": 0.45666,
+      "handled": 24,
+      "retention": 1.0
+    },
+    {
+      "name": "clear",
+      "requests": 96,
+      "mean_window": 13697,
+      "final_window": 26695,
+      "cache_hit": 0.9557404688012131,
+      "cache_write_tokens": 57960,
+      "usd": 0.4377571,
+      "handled": 24,
+      "retention": 1.0
+    },
+    {
+      "name": "summary+pin",
+      "requests": 93,
+      "mean_window": 2469,
+      "final_window": 3650,
+      "cache_hit": 0.6830692207226817,
+      "cache_write_tokens": 72565,
+      "usd": 0.3778779,
+      "handled": 24,
+      "retention": 1.0
+    }
+  ]
+}
