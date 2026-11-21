@@ -1,0 +1,181 @@
+{
+  "cases": 40,
+  "code_graders": {
+    "passed": {
+      "v1": 39,
+      "v2": 40,
+      "split": {
+        "both_pass": 39,
+        "a_only": 0,
+        "b_only": 1,
+        "both_fail": 0
+      },
+      "v1_only": [],
+      "v2_only": [
+        "G26"
+      ],
+      "diff": 0.025,
+      "ci95": [
+        0.0,
+        0.075
+      ]
+    },
+    "schema_valid": {
+      "v1": 40,
+      "v2": 40,
+      "split": {
+        "both_pass": 40,
+        "a_only": 0,
+        "b_only": 0,
+        "both_fail": 0
+      },
+      "v1_only": [],
+      "v2_only": [],
+      "diff": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "escalation_correct": {
+      "v1": 39,
+      "v2": 40,
+      "split": {
+        "both_pass": 39,
+        "a_only": 0,
+        "b_only": 1,
+        "both_fail": 0
+      },
+      "v1_only": [],
+      "v2_only": [
+        "G26"
+      ],
+      "diff": 0.025,
+      "ci95": [
+        0.0,
+        0.075
+      ]
+    },
+    "cites_required": {
+      "v1": 40,
+      "v2": 40,
+      "split": {
+        "both_pass": 40,
+        "a_only": 0,
+        "b_only": 0,
+        "both_fail": 0
+      },
+      "v1_only": [],
+      "v2_only": [],
+      "diff": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "numbers_supported": {
+      "v1": 40,
+      "v2": 40,
+      "split": {
+        "both_pass": 40,
+        "a_only": 0,
+        "b_only": 0,
+        "both_fail": 0
+      },
+      "v1_only": [],
+      "v2_only": [],
+      "diff": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "judges": {
+    "claude-haiku-5-5": {
+      "v1": 40,
+      "v2": 39,
+      "split": {
+        "both_pass": 39,
+        "a_only": 1,
+        "b_only": 0,
+        "both_fail": 0
+      },
+      "diff": -0.025,
+      "ci95": [
+        -0.075,
+        0.0
+      ],
+      "youden": 1.0,
+      "corrected_diff": -0.025
+    },
+    "claude-sonnet-5-5": {
+      "v1": 38,
+      "v2": 40,
+      "split": {
+        "both_pass": 38,
+        "a_only": 0,
+        "b_only": 2,
+        "both_fail": 0
+      },
+      "diff": 0.05,
+      "ci95": [
+        0.0,
+        0.125
+      ],
+      "youden": 0.967,
+      "corrected_diff": 0.052
+    }
+  },
+  "pairwise": {
+    "claude-haiku-5-5": {
+      "pairs": 40,
+      "consistent": 32,
+      "v2_won_both_orders": 2,
+      "v1_won_both_orders": 30,
+      "position_a_won_both": 5,
+      "flipped_cases": [
+        "G02",
+        "G04",
+        "G11",
+        "G13",
+        "G14",
+        "G19",
+        "G22",
+        "G31"
+      ]
+    },
+    "claude-sonnet-5-5": {
+      "pairs": 40,
+      "consistent": 24,
+      "v2_won_both_orders": 7,
+      "v1_won_both_orders": 17,
+      "position_a_won_both": 3,
+      "flipped_cases": [
+        "G01",
+        "G03",
+        "G13",
+        "G14",
+        "G16",
+        "G19",
+        "G20",
+        "G21",
+        "G25",
+        "G28",
+        "G29",
+        "G30",
+        "G32",
+        "G33",
+        "G38",
+        "G40"
+      ]
+    }
+  },
+  "discordant_share": 0.025,
+  "cases_needed": {
+    "change 0.05, 10% of cases flip": 312,
+    "change 0.05, 20% of cases flip": 625,
+    "change 0.10, 10% of cases flip": 77,
+    "change 0.10, 20% of cases flip": 155
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "cases": 40,
+  "drafter": {
+    "model": "claude-sonnet-5-5",
+    "usage": {
+      "input_tokens": 3246,
+      "output_tokens": 5321,
+      "cache_read": 57728,
+      "cache_write": 14432
+    },
+    "cost_usd": 0.1015
+  },
+  "judge": {
+    "model": "claude-haiku-5-5",
+    "usage": {
+      "input_tokens": 7328,
+      "output_tokens": 561,
+      "cache_read": 59080,
+      "cache_write": 0
+    },
+    "cost_usd": 0.0016
+  },
+  "total_usd": 0.1031,
+  "per_case_usd": 0.00258
+}

@@ -1,0 +1,80 @@
+{
+  "_note": "Synthetic knowledge base for the tutorial. KB-101 to KB-108 come from Build a production MCP server; KB-109 to KB-115 are new. Every company and product here is made up.",
+  "articles": [
+    {
+      "id": "KB-101",
+      "title": "Configure SAML single sign-on",
+      "body": "Set the Entity ID and the ACS URL in your identity provider exactly as shown under Settings > SSO. An 'invalid audience' error means the Entity ID in the IdP does not match. After changing IdP, upload the new signing certificate."
+    },
+    {
+      "id": "KB-102",
+      "title": "Export invoices in bulk",
+      "body": "Go to Billing > Invoices, filter by date range and choose Export > PDF archive. Archives over 500 invoices are emailed as a download link."
+    },
+    {
+      "id": "KB-103",
+      "title": "Rotate a webhook signing secret",
+      "body": "When you rotate a signing secret, both the old and the new secret are valid for 24 hours. Receivers that verify signatures must accept the new secret; a 401 from your endpoint usually means the receiver still checks the old one or computes the signature over a modified body."
+    },
+    {
+      "id": "KB-104",
+      "title": "Webhook retry schedule",
+      "body": "Failed webhook deliveries are retried 8 times with exponential backoff over about 24 hours. After the last retry the event is marked failed and can be redelivered from the dashboard."
+    },
+    {
+      "id": "KB-105",
+      "title": "Use an authenticator app for two-factor",
+      "body": "Under Profile > Security choose Authenticator app and scan the QR code. SMS remains available as a fallback unless an admin disables it."
+    },
+    {
+      "id": "KB-106",
+      "title": "API rate limits",
+      "body": "The REST API allows 10 requests per second per token with bursts up to 600 requests. Responses carry RateLimit headers; on 429, wait for the time in Retry-After."
+    },
+    {
+      "id": "KB-107",
+      "title": "How seats are counted",
+      "body": "Billing counts every user who is not deactivated, including invited users who have not accepted. Remove pending invitations under Admin > Users to lower the seat count."
+    },
+    {
+      "id": "KB-108",
+      "title": "Reset a password",
+      "body": "Password reset links expire after 30 minutes. After a reset, sessions on other devices are signed out. If the new password is rejected, check that the account is not managed by SSO and that caps lock is off."
+    },
+    {
+      "id": "KB-109",
+      "title": "Service credits",
+      "body": "Service credits are defined in the Enterprise SLA. If monthly uptime falls below 99.9%, the account owner can request a credit under Billing > SLA claims within 30 days of the incident. Support agents cannot grant or promise credits."
+    },
+    {
+      "id": "KB-110",
+      "title": "Refunds",
+      "body": "Annual plans can be refunded pro rata within 14 days of purchase or renewal. Refunds are decided by the billing team, not by support: support opens a billing request on the customer's behalf."
+    },
+    {
+      "id": "KB-111",
+      "title": "Delete a workspace",
+      "body": "An admin can delete the workspace under Admin > Workspace > Delete. Deleted data is kept for 30 days and support can restore it during that time. After 30 days the deletion is permanent."
+    },
+    {
+      "id": "KB-112",
+      "title": "Sign-in options by plan",
+      "body": "SAML single sign-on is available on the Enterprise plan only. Team and Starter plans can use Google or Microsoft sign-in, which an admin turns on under Settings > Sign-in."
+    },
+    {
+      "id": "KB-113",
+      "title": "Report a security concern",
+      "body": "If you suspect a compromised account, a leaked token or exposed data, report it in a ticket. The security team reviews every report within 1 business day. Never paste passwords or full tokens into a ticket."
+    },
+    {
+      "id": "KB-114",
+      "title": "Change your plan",
+      "body": "Upgrades take effect immediately and the difference is prorated on the next invoice. Downgrades take effect at the end of the current billing period."
+    },
+    {
+      "id": "KB-115",
+      "title": "Service status",
+      "body": "Live incident updates are posted on the status page at status.helpline.example. Subscribe there to get updates by email or SMS."
+    }
+  ]
+}

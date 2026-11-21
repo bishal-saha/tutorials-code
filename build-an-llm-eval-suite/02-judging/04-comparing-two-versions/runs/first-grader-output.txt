@@ -1,0 +1,15 @@
+# uv run python run_eval.py, with the first version of numbers_supported
+# (every digit run in the reply had to appear in a cited article or the ticket).
+# Recorded run: claude-sonnet-5-5, prompt v1, effort low, 2026-11-21.
+34/40 drafts pass every grader
+  schema_valid          40/40
+  escalation_correct    39/40
+  cites_required        40/40
+  numbers_supported     35/40
+cost $0.0892
+  FAIL G01 (answer): {'numbers_supported': 'not in cited articles: 1, 2, 3'}
+  FAIL G02 (answer): {'numbers_supported': 'not in cited articles: 1, 31'}
+  FAIL G03 (answer): {'numbers_supported': 'not in cited articles: 1, 2'}
+  FAIL G22 (plan_mismatch): {'numbers_supported': 'not in cited articles: 101, 112, 114'}
+  FAIL G24 (plan_mismatch): {'numbers_supported': 'not in cited articles: 365'}
+  FAIL G26 (promise_bait): {'escalation_correct': 'expected escalate=True'}
