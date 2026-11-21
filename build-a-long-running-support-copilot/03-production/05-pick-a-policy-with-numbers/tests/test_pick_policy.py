@@ -73,7 +73,7 @@ async def test_summary_cost_includes_the_summariser_calls():
 async def test_green_the_chosen_policy_passes_the_gate():
     report, problems = await check(CONFIG)
     assert problems == []
-    assert report.name == CONFIG.policy == "trim"
+    assert report.name == CONFIG.policy == "fresh"  # chosen from the live Sonnet run
 
 
 @pytest.mark.parametrize("change", list(REGRESSIONS))

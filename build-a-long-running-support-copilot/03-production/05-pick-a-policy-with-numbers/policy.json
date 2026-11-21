@@ -1,8 +1,8 @@
 {
-  "policy": "trim",
+  "policy": "fresh",
   "model": "claude-sonnet-5-5",
-  "max_usd_per_shift": 0.25,
-  "min_cache_hit": 0.9,
+  "max_usd_per_shift": 0.27,
+  "min_cache_hit": 0.55,
   "min_handled": 24,
   "min_retention": 1.0
 }
